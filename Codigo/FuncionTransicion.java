@@ -1,23 +1,28 @@
 import java.util.*;
 public class AutomataPila {
+	
+	private Gramatica gramatica;
+	
 	private List<String> estados;
 	private String estadoInicial;
 	private String estadoFinal;
-	private String noTerminalInicial;
+	private List<String> alfabeto=gramatica.getAlfabeto();
 	private List<String> alfabetoPila;
 	private String inicialPila;
 	private FuncionTransicion transiciones;
 
-	public AutomataPila(List<String> estados, String estadoInicial, String estadoFinal, String noTerminalInicial,
-			List<String> alfabetoPila, String inicialPila, FuncionTransicion transiciones) {
-		super();
+	public AutomataPila(Gramatica gramatica, List<String> estados, String estadoInicial, String estadoFinal, String noTerminalInicial,
+			String inicialPila) {
+		this.gramatica=gramatica;
 		this.estados = estados;
 		this.estadoInicial = estadoInicial;
-		this.estadoFinal = estadoFinal;
-		this.noTerminalInicial = noTerminalInicial;
-		this.alfabetoPila = alfabetoPila;
-		this.inicialPila = inicialPila;
-		this.transiciones = transiciones;
+		this.estadoFinal = estadoFinal;		
+		this.inicialPila = "Z0";
+		List<String> alfPila=new ArrayList<String>();
+		alfPila=gramatica.getAlfabeto();
+		alfPila.addAll(gramatica.getNoTerminales());
+		alfPila.add(inicialPila);		
+		this.transiciones = new FuncionTransicion(gramatica);
 	}
 
 	public List<String> getEstados() {
@@ -43,13 +48,22 @@ public class AutomataPila {
 	public void setEstadoFinal(String estadoFinal) {
 		this.estadoFinal = estadoFinal;
 	}
+	
 
-	public String getNoTerminalInicial() {
-		return noTerminalInicial;
+	public Gramatica getGramatica() {
+		return gramatica;
 	}
 
-	public void setNoTerminalInicial(String noTerminalInicial) {
-		this.noTerminalInicial = noTerminalInicial;
+	public void setGramatica(Gramatica gramatica) {
+		this.gramatica = gramatica;
+	}
+
+	public List<String> getAlfabeto() {
+		return alfabeto;
+	}
+
+	public void setAlfabeto(List<String> alfabeto) {
+		this.alfabeto = alfabeto;
 	}
 
 	public List<String> getAlfabetoPila() {
