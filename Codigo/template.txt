@@ -1,0 +1,7 @@
+símbolos no terminales separados por comas
+símbolos del alfabeto separados por comas
+símbolo no terminal inicial
+producciones con formato: simboloNoTerminal -> w es cadena de (V U Sigma)*
+e.g. A-> BaNS, T->lmd
+
+Imprimir las movidas realizadas por el autómata de pila equivalente a la gramática para generar la cadena
