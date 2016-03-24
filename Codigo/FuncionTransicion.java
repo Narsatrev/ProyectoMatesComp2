@@ -22,6 +22,7 @@ public class AutomataPila {
 		alfPila=gramatica.getAlfabeto();
 		alfPila.addAll(gramatica.getNoTerminales());
 		alfPila.add(inicialPila);		
+        this.alfabetoPila=alfPila;
 		this.transiciones = new FuncionTransicion(gramatica);
 	}
 
